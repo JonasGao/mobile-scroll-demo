@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link href="./index.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script src="./echarts.min.js"></script>
+  <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        const myChart = echarts.init(document.getElementById('main'));
+
+        let x = [];
+        let y = [];
+        const s = 1.70158;
+
+        // (s+1)*t^3 - s*t^2
+        for (let i = 0; i < 50; i++) {
+          x.push(i);
+          // y.push(Math.pow(i, 2))
+          y.push((s + 1) * Math.pow(i, 3) - s * Math.pow(i, 2))
+        }
+
+        // 指定图表的配置项和数据
+        const option = {
+          xAxis: {},
+          yAxis: {
+            data: x
+          },
+          series: [{
+            type: 'line',
+            data: y
+          }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
